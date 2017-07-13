@@ -5,21 +5,11 @@ import pygame
 def check_events(ship):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            # 注销pygame库
-            pygame.quit()
-            # 退出程序
             sys.exit(0)
         elif event.type == pygame.KEYDOWN:
-            # 左右移动
-            if event.key == pygame.K_RIGHT:
-                ship.moving_right = True
-            elif event.key == pygame.K_LEFT:
-                ship.moving_left = True
+            check_keydown_events(event, ship)
         elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_RIGHT:
-                ship.moving_right = False
-            elif event.key == pygame.K_LEFT:
-                ship.moving_left = False
+            check_keyup_events(event, ship)
 
 
 def update_screen(screen, ship, settings):
@@ -29,3 +19,19 @@ def update_screen(screen, ship, settings):
     ship.blitme()
     # 刷新屏幕
     pygame.display.flip()
+
+
+def check_keydown_events(event, ship):
+    """检测键盘摁下事件"""
+    if event.key == pygame.K_RIGHT:
+        ship.moving_right = True
+    elif event.key == pygame.K_LEFT:
+        ship.moving_left = True
+
+
+def check_keyup_events(event, ship):
+    """检测键盘抬起事件"""
+    if event.key == pygame.K_RIGHT:
+        ship.moving_right = False
+    elif event.key == pygame.K_LEFT:
+        ship.moving_left = False

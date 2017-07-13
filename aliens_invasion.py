@@ -5,10 +5,11 @@ from ship import Ship
 
 
 def run_game():
-    # 初始化pygame
-    pygame.init()
-    # 创建设置对象
+    """初始化屏幕相关参数"""
+    # 获取设置对象
     settings = Settings()
+    # 初始化pygame对象
+    pygame.init()
     # 设置一个1200x800的窗口
     screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
     # 设置标题
@@ -26,4 +27,5 @@ def run_game():
         gf.update_screen(screen, ship, settings)
 
 
-run_game()
+if __name__ == '__main__':
+    run_game()

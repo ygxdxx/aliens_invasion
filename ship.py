@@ -24,11 +24,14 @@ class Ship:
         self.moving_left = False
 
     def blitme(self):
+        """刷新飞船位置"""
         self.screen.blit(self.image, self.image_rect)
 
     def update(self):
+        """使飞船左右移动"""
         if self.moving_right and self.image_rect.right < self.screen_rect.right:
             self.center += self.settings.ship_speed_factor
         if self.moving_left and self.image_rect.left > 0:
             self.center -= self.settings.ship_speed_factor
+        # 调整所在位置
         self.image_rect.centerx = self.center
