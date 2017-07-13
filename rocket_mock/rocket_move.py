@@ -12,25 +12,25 @@ def rocket_move():
     rocket = Rocket(screen, settings)
 
     while True:
-        # check_events(rocket)
+        check_events(rocket)
         update_screen(rocket, settings, screen)
-        # rocket.update_x()
 
 
 def update_screen(rocket, settings, screen):
-    screen.fill(settings.bg_color)
-    pygame.display.flip()
     rocket.blit_rocket()
+    rocket.update_x()
+    pygame.display.flip()
+    screen.fill(settings.bg_color)
 
 
 def check_events(rocket):
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        elif event == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN:
             check_key_down(event, rocket)
-        elif event == pygame.KEYUP:
+        elif event.type == pygame.KEYUP:
             check_key_up(event, rocket)
 
 
