@@ -27,6 +27,7 @@ def run_game():
         gf.check_events(ship, settings, screen, bullets)
         ship.update()
         bullets.update()
+        gf.update_bullets(bullets)
         # 刷新屏幕
         gf.update_screen(screen, ship, settings, bullets)
 
